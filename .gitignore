@@ -1,0 +1,23 @@
+# 로그 파일 제외
+logs/
+*.log
+
+# 빌드 결과물 제외
+/build/
+*.o
+*.class
+
+# 환경 설정 파일 제외
+.env
+config/local.json
+
+# IDE 자동생성 파일 제외
+.idea
+.claude
+
+# 특정 파일 확장자 제외
+*.log  # 모든 .log 파일 제외
+*.tmp  # 모든 .tmp 파일 제외
+
+# 특정 디렉터리 제외
+node_modules/*
