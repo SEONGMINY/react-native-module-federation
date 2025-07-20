@@ -82,6 +82,9 @@ importers:
 
   apps/host:
     dependencies:
+      '@module-federation/enhanced':
+        specifier: ^0.17.0
+        version: 0.17.0(@rspack/core@1.3.4)(react-dom@19.1.0)(react@19.0.0)(typescript@5.0.4)(webpack@5.100.2)
       react:
         specifier: 19.0.0
         version: 19.0.0
