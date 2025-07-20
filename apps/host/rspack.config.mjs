@@ -15,6 +15,13 @@ const __dirname = path.dirname(__filename);
 export default {
   context: __dirname,
   entry: './index.js',
+  experiments: {
+    // 임시적으로 true, env 설정이후 다시 설정
+    incremental: true,
+  },
+  output: {
+    uniqueName: 'poc-host',
+  },
   resolve: {
     ...Repack.getResolveOptions(),
   },
@@ -24,5 +31,24 @@ export default {
       ...Repack.getAssetTransformRules(),
     ],
   },
-  plugins: [new Repack.RepackPlugin()],
+  plugins: [
+      new Repack.RepackPlugin(),
+      new Repack.plugins.ModuleFederationPluginV2({
+        name: 'host',
+        dts: false,
+        remotes: {
+          home: `home@http://localhost:9000/ios/mf-manifest.json`,
+        },
+        shared: {
+          'react': {
+            singleton: true,
+            version: '19.0.0',
+          },
+          'react-native': {
+            singleton: true,
+            version: '0.79.5',
+          }
+        }
+      })
+  ],
 };
