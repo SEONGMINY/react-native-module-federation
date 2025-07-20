@@ -15,6 +15,12 @@ const __dirname = path.dirname(__filename);
 export default {
   context: __dirname,
   entry: './index.js',
+  experiments: {
+    incremental: true,
+  },
+  output: {
+    uniqueName: 'poc-home',
+  },
   resolve: {
     ...Repack.getResolveOptions(),
   },
@@ -24,5 +30,27 @@ export default {
       ...Repack.getAssetTransformRules(),
     ],
   },
-  plugins: [new Repack.RepackPlugin()],
+  plugins: [
+      new Repack.RepackPlugin(),
+      new Repack.plugins.ModuleFederationPluginV2({
+        name: 'home',
+        filename: 'home.container.js.bundle',
+        dts: false,
+        exposes: {
+          './App': './App',
+        },
+        shared: {
+          'react': {
+            eager: true,
+            singleton: true,
+            version: '19.0.0',
+          },
+          'react-native': {
+            eager: true,
+            singleton: true,
+            version: '0.79.5',
+          },
+        },
+      })
+  ],
 };
