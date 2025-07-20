@@ -42,11 +42,13 @@ export default {
         shared: {
           'react': {
             singleton: true,
-            version: '19.0.0',
+            eager: true,
+            requiredVersion: '19.0.0',
           },
           'react-native': {
             singleton: true,
-            version: '0.79.5',
+            eager: true,
+            requiredVersion: '0.79.5',
           }
         }
       })

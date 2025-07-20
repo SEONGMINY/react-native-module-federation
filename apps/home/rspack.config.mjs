@@ -35,22 +35,22 @@ export default {
       new Repack.plugins.ModuleFederationPluginV2({
         name: 'home',
         filename: 'home.container.js.bundle',
-        dts: false,
+        dts: true,
         exposes: {
-          './App': './App',
+          './HomeScreen': './App',
         },
         shared: {
           'react': {
-            eager: true,
             singleton: true,
-            version: '19.0.0',
+            eager: false,
+            requiredVersion: '19.0.0',
           },
           'react-native': {
-            eager: true,
             singleton: true,
-            version: '0.79.5',
-          },
-        },
+            eager: false,
+            requiredVersion: '0.79.5',
+          }
+        }
       })
   ],
 };
