@@ -16,7 +16,7 @@ React Native는 원래 Metro 번들러를 사용했지만, Callstack 팀이 개�
 
 ## Remote(mini) 앱의 역할과 특징
 
-### Remote 앱의 역핳
+### Remote 앱의 역할
 - 특정 기능을 담당하는 독립적인 모듈
 
 ### Remote 앱의 특징
